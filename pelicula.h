@@ -1,6 +1,7 @@
 #ifndef TP4_ALGO2_PELICULAS_H
 #define TP4_ALGO2_PELICULAS_H
 
+#include <iostream>
 class Pelicula{
 
     private:
@@ -9,7 +10,7 @@ class Pelicula{
         Pelicula(){};
 
         // muestra los atributos de la peli
-        void mostrar();
+        void mostrar(){ std::cout << "soy una pelicula" << std::endl;}
 
 };
 

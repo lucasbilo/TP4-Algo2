@@ -21,7 +21,7 @@ int main(){
         menu.mostrar();
         opcion = validaciones.num_entre_rangos("Por favor ingrese una opcion: ", 1, 4);
         cout << " ------------------------------------------------- " << endl;
-        menu.ir_a_opcion(opcion);
+        menu.mostrar_lista(opcion);
         cout << " ------------------------------------------------- " << endl;
     }while(opcion != 4);
 
