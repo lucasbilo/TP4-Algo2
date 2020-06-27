@@ -18,10 +18,13 @@ void Menu::mostrar(){
     cout << " " << endl;
 }
 
-void Menu::ir_a_opcion(int opcion){
+void Menu::mostrar_lista(int opcion){
+    Lista<Pelicula>* lista;
     switch(opcion){
-        case 1: /* mostrar peliculas_vistas */ ; break;
-        case 2: /* mostrar peliculas_no_vistas */; break;
-        case 3: /* mostrar peliculas_recomendadas */ ; break;
+        case 1: lista = peliculas_vistas  ; break;
+        case 2: lista = peliculas_no_vistas; break;
+        case 3: lista = peliculas_recomendadas; break;
     }
+    for(int pos = 1; pos <= lista->obtener_tam(); pos++)
+        lista->obtener_dato(pos).mostrar();
 }

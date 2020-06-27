@@ -25,7 +25,7 @@ class Menu{
         // Si opcion == 1 muestra peliculas_vistas
         // Si opcion == 2 muestra peliculas_no_vistas
         // Si opcion == 3 muestra peliculas_recomendadas
-        void ir_a_opcion(int opcion);
+        void mostrar_lista(int opcion);
 
 };
 
