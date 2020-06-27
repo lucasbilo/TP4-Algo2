@@ -81,13 +81,13 @@ void Lista<Dato>::insertar(Dato d){
 
 template < typename Dato >
 Dato Lista<Dato>::obtener_dato(unsigned pos){
-    Nodo<Dato>* aux = primero;
-    if (!lista_vacia()){
-        for (unsigned cont = 1; (cont < pos && aux); cont++)
-            aux = aux->obtener_sig();
-        return aux->obtener_dato();
+    Nodo<Dato>* paux = primero;
+    unsigned i = 1;
+    while (i < pos && paux->obtener_sig()){
+        paux = paux->obtener_sig();
+        i++;
     }
-    return 0;
+    return paux->obtener_dato();
 }
 
 template < typename Dato >
