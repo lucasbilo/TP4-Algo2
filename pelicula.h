@@ -14,11 +14,11 @@ class Pelicula{
         std::string genero;
         int puntaje;
         std::string director;
-        Lista<std::string> actores;
+        Lista<std::string>* actores;
 
     public:
-
-        Pelicula(std::string nombre, std::string genero, int puntaje, std::string director, Lista<std::string> actores);
+        Pelicula();
+        Pelicula(std::string nombre, std::string genero, int puntaje, std::string director, Lista<std::string>* actores);
         ~Pelicula();
         bool es_recomendada(Lista<Pelicula>* vistas);
         std::string obtener_nombre();
@@ -26,6 +26,8 @@ class Pelicula{
         int obtener_puntaje();
         std::string obtener_director();
         Lista<std::string>* obtener_actores();
+        void copiar_pelicula(Pelicula peli);
+        bool coincide_algun_actor(Lista<std::string>* actores_comparar);
 
         // muestra los atributos de la peli
         void mostrar();

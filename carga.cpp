@@ -19,20 +19,21 @@ Carga::~Carga(){
 }
 
 Pelicula Carga::leer_pelicula(ifstream &archivo){
-    string nombre, genero, director, actor_aux;
-    Lista<string> actores;
+    string nombre, genero, director, actor_aux, puntaje_str, linea_en_blanco;
+    Lista<string>* actores = new Lista<string>;
     int puntaje;
     getline(archivo, nombre);
     getline(archivo, genero);
-    archivo >> puntaje;
+    getline(archivo, puntaje_str);
+    puntaje = stoi(puntaje_str);
     getline(archivo, director);
-
     archivo >> actor_aux;
-    actores.insertar(actor_aux);
+    actores->insertar(actor_aux);
     while(archivo.get() == ' '){
         archivo >> actor_aux;
-        actores.insertar(actor_aux);
+        actores->insertar(actor_aux);
     }
+    getline(archivo, linea_en_blanco);
     return Pelicula(nombre, genero, puntaje, director, actores);
 }
 
@@ -46,9 +47,11 @@ void Carga::agregar(Lista<Pelicula>* peliculas, ifstream& archivo){
 }
 
 void Carga::agregar_recomendadas(){
+    Pelicula* aux;
     for(int i = 1; i <= no_vistas->obtener_tam(); i++){
         if(no_vistas->obtener_dato(i).es_recomendada(vistas))
-            recomendadas->insertar(no_vistas->obtener_dato(i));
+            aux->copiar_pelicula(no_vistas->obtener_dato(i));
+            recomendadas->insertar(*aux);
     }
 }
 

@@ -14,8 +14,7 @@ int main(){
     Lista<Pelicula> peliculas_vistas;
     Lista<Pelicula> peliculas_no_vistas;
     Lista<Pelicula> peliculas_recomendadas;
-    Carga carga_peliculas(&peliculas_vistas, &peliculas_no_vistas, &peliculas_recomendadas,
-                          ARCHIVO_VISTAS, ARCHIVO_NO_VISTAS, ARCHIVO_RECOMENDADAS);
+    Carga carga_peliculas(&peliculas_vistas, &peliculas_no_vistas, &peliculas_recomendadas, ARCHIVO_VISTAS, ARCHIVO_NO_VISTAS, ARCHIVO_RECOMENDADAS);
 
     carga_peliculas.cargar_datos();
 

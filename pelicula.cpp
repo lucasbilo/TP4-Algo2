@@ -2,7 +2,10 @@
 
 using namespace std;
 
-Pelicula::Pelicula(string nombre, string genero, int puntaje, string director, Lista<string> actores){
+Pelicula::Pelicula(){
+}
+
+Pelicula::Pelicula(string nombre, string genero, int puntaje, string director, Lista<string>* actores){
     this->nombre = nombre;
     this->genero = genero;
     this->puntaje = puntaje;
@@ -11,14 +14,24 @@ Pelicula::Pelicula(string nombre, string genero, int puntaje, string director, L
 }
 
 Pelicula::~Pelicula(){
+    delete actores;
+}
+
+void Pelicula::copiar_pelicula(Pelicula original){
+    nombre = original.obtener_nombre();
+    genero = original.obtener_genero();
+    puntaje = original.obtener_puntaje();
+    director = original.obtener_director();
+    actores = new Lista<string>;
+    actores->copiar(original.obtener_actores());
 }
 
 bool Pelicula::coincide_algun_actor(Lista<string>* actores_comparar){
     int i = 1, j = 1;
     bool coincidencia = false;
-    while(!coincidencia && i <= actores.obtener_tam()){
+    while(!coincidencia && i <= actores->obtener_tam()){
         while(!coincidencia && j <= actores_comparar->obtener_tam()){
-            if (actores.obtener_dato(i) == actores.obtener_dato(j))
+            if (actores->obtener_dato(i) == actores->obtener_dato(j))
                 coincidencia = true;
             j++;
         }
@@ -38,7 +51,7 @@ bool Pelicula::es_recomendada(Lista<Pelicula>* vistas){
     while(!es_recomendada && i <= vistas->obtener_tam()){
         aux = vistas->obtener_dato(i);
         if(genero == aux.obtener_genero()){
-            if( director == aux.obtener_director || coincide_algun_actor(aux.obtener_actores()))
+            if( director == aux.obtener_director() || coincide_algun_actor(aux.obtener_actores()))
                 es_recomendada = true;
         }
         i++;
@@ -63,7 +76,7 @@ string Pelicula::obtener_director(){
 }
 
 Lista<string>* Pelicula::obtener_actores(){
-    return &actores;
+    return actores;
 }
 
 

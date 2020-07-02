@@ -47,6 +47,8 @@ template < typename Dato >
         // POST: libera el nodo que está en la posición pos (se toma 1 como el primero)
         void eliminar_dato(unsigned pos);
 
+        void copiar(Lista<Dato>*);
+
 };
 
 
@@ -112,5 +114,14 @@ void Lista<Dato>::eliminar_dato(unsigned pos){
         tam--;
     }
 }
+
+template < typename Dato >
+void Lista<Dato>::copiar(Lista<Dato>* lista){
+    for(int i = 1; i <= lista->obtener_tam(); i++){
+        insertar(lista->obtener_dato(i));
+    }
+}
+
+
 
 #endif //TP4_ALGO2_LISTA_H
