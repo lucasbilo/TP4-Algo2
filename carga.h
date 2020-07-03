@@ -1,6 +1,7 @@
 #ifndef _CARGA_H
 #define _CARGA_H
 
+using namespace std;
 #include "lista.h"
 #include "pelicula.h"
 
@@ -11,16 +12,16 @@ class Carga {
         Lista<Pelicula>* vistas;
         Lista<Pelicula>* no_vistas;
         Lista<Pelicula>* recomendadas;
-        std::string nombre_archivo_vistas;
-        std::string nombre_archivo_no_vistas;
-        std::string nombre_archivo_recomendadas;
+        string nombre_archivo_vistas;
+        string nombre_archivo_no_vistas;
+        string nombre_archivo_recomendadas;
 
     public:
 
         /* Constructor Carga
         *  Post: Se inicializa cada atributo de la Carga con su correspondiente parametro recibido.
         */
-        Carga(Lista<Pelicula>* vistas, Lista<Pelicula>* no_vistas, Lista<Pelicula>* recomendadas, std::string archivo_vistas, std::string archivo_no_vistas, std::string archivo_recomendadas);
+        Carga(Lista<Pelicula>* vistas, Lista<Pelicula>* no_vistas, Lista<Pelicula>* recomendadas, string archivo_vistas, string archivo_no_vistas, string archivo_recomendadas);
 
         //Destructor
         ~Carga();
@@ -36,7 +37,7 @@ class Carga {
         * Pre: El archivo sigue una estructura determinada por nombre, genero, puntaje, director y finalmente una lista de actores.
         * Post: Se agregan las peliculas del archivo en la lista de peliculas.
         */
-        void agregar(Lista<Pelicula>* peliculas, std::ifstream& archivo);
+        void agregar(Lista<Pelicula>* peliculas, ifstream& archivo);
 
         /*
         * Pre: El archivo de recomendadas se abrio correctamente.
@@ -49,7 +50,7 @@ class Carga {
          * Pre: El archivo fue abierto correctamente y sigue una estructura determinada por nombre, genero, puntaje, director y finalmente una lista de actores.
          * Post: Lee una pelicula y la guarda en memoria dinamica apuntada por peli.
          */
-         void leer_pelicula(std::ifstream &archivo, Pelicula* &peli);
+         void leer_pelicula(ifstream &archivo, Pelicula* &peli);
 };
 
 
