@@ -17,6 +17,8 @@ public:
     // Post: inicializa a los atributos peliculas_vistas y peliculas_no_vistas
     Menu(Lista<Pelicula>* vistas, Lista<Pelicula>* no_vistas , Lista<Pelicula>* recomendadas);
 
+    ~Menu();
+
     //Post: Imprime el menu de opciones.
     void mostrar();
 
@@ -26,6 +28,7 @@ public:
     // Si opcion == 2 muestra peliculas_no_vistas
     // Si opcion == 3 muestra peliculas_recomendadas
     void mostrar_lista(int opcion);
+    void mostrar_lista(Lista<Pelicula>* lista);
 
 };
 

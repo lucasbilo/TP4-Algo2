@@ -9,6 +9,10 @@ Menu::Menu(Lista<Pelicula>* vistas, Lista<Pelicula>* no_vistas, Lista<Pelicula>*
     peliculas_recomendadas = recomendadas;
 }
 
+Menu::~Menu(){
+}
+
+
 void Menu::mostrar(){
     cout << "Opciones disponibles: " << endl;
     cout << "1) Mostrar las peliculas ya vistas." << endl;
@@ -18,13 +22,28 @@ void Menu::mostrar(){
     cout << " " << endl;
 }
 
-void Menu::mostrar_lista(int opcion){
-    Lista<Pelicula>* lista;
-    switch(opcion){
-        case 1: lista = peliculas_vistas  ; break;
-        case 2: lista = peliculas_no_vistas; break;
-        case 3: lista = peliculas_recomendadas; break;
-    }
-    for(int pos = 1; pos <= lista->obtener_tam(); pos++)
+void Menu::mostrar_lista(Lista<Pelicula>* lista){
+    for(unsigned pos = 1; pos <= lista->obtener_tam(); pos++) {
+        cout << "Pelicula nro " << pos << ")" << endl;
         lista->obtener_dato(pos)->mostrar();
+    }
 }
+
+void Menu::mostrar_lista(int opcion) {
+    switch (opcion) {
+        case 1:
+            mostrar_lista(peliculas_vistas);
+            break;
+        case 2:
+            mostrar_lista(peliculas_no_vistas);
+            break;
+        case 3:
+            mostrar_lista(peliculas_recomendadas);
+            break;
+    }
+/*
+    for(unsigned pos = 1; pos <= peliculas_vistas->obtener_tam(); pos++){
+        cout << "Pelicula nro " << pos << ")" << endl;
+        peliculas_vistas->obtener_dato(pos)->mostrar();
+    }
+*/}

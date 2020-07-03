@@ -83,7 +83,7 @@ Lista<string>* Pelicula::obtener_actores(){
 void Pelicula::mostrar_actores(){
     cout << "Actores: ";
     for(unsigned i = 1; i <= actores->obtener_tam(); i++){
-        cout << *actores->obtener_dato(i) << endl;
+        cout << *actores->obtener_dato(i) << " ";
     }
 }
 
@@ -96,6 +96,5 @@ void Pelicula::mostrar(){
     mostrar_actores();
 
 
-    cout << "soy una pelicula" << endl;
 }
 
