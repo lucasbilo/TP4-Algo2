@@ -26,10 +26,11 @@ void Menu::mostrar_lista(Lista<Pelicula>* lista){
     for(unsigned pos = 1; pos <= lista->obtener_tam(); pos++) {
         cout << "Pelicula nro " << pos << ")" << endl;
         lista->obtener_dato(pos)->mostrar();
+        cout << " ------------------------------------------------- " << endl;
     }
 }
 
-void Menu::mostrar_lista(int opcion) {
+void Menu::ir_a_opcion(int opcion) {
     switch (opcion) {
         case 1:
             mostrar_lista(peliculas_vistas);
@@ -41,9 +42,4 @@ void Menu::mostrar_lista(int opcion) {
             mostrar_lista(peliculas_recomendadas);
             break;
     }
-/*
-    for(unsigned pos = 1; pos <= peliculas_vistas->obtener_tam(); pos++){
-        cout << "Pelicula nro " << pos << ")" << endl;
-        peliculas_vistas->obtener_dato(pos)->mostrar();
-    }
-*/}
+}

@@ -1,7 +1,5 @@
-#include "lista.h"
 #include "menu.h"
 #include "validacion.h"
-#include "pelicula.h"
 #include "carga.h"
 
 using namespace std;
@@ -26,7 +24,7 @@ int main(){
         menu.mostrar();
         opcion = validaciones.num_entre_rangos("Por favor ingrese una opcion: ", 1, 4);
         cout << " ------------------------------------------------- " << endl;
-        menu.mostrar_lista(opcion);
+        menu.ir_a_opcion(opcion);
         cout << " ------------------------------------------------- " << endl;
     }while(opcion != 4);
 

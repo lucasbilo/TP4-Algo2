@@ -24,10 +24,13 @@ public:
 
     // PRE: opcion debe ser 1, 2 o 3.
     // POST: Segun el valor de opcion se hace lo siguiente:
-    // Si opcion == 1 muestra peliculas_vistas
-    // Si opcion == 2 muestra peliculas_no_vistas
-    // Si opcion == 3 muestra peliculas_recomendadas
-    void mostrar_lista(int opcion);
+    // Si opcion == 1 se llama a mostrar_lista(peliculas_vistas)
+    // Si opcion == 2 se llama a mostrar_lista(peliculas_no_vistas)
+    // Si opcion == 3 se llama a mostrar_lista(peliculas_recomendadas)
+    void ir_a_opcion(int opcion);
+
+    // PRE: La lista debe estar inicializada y no vacia
+    // POST: Recorre todas las peliculas de la lista pasada por parametro y llama al metodo mostrar() de cada una
     void mostrar_lista(Lista<Pelicula>* lista);
 
 };
