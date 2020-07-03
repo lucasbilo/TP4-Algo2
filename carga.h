@@ -5,6 +5,10 @@ using namespace std;
 #include "lista.h"
 #include "pelicula.h"
 
+const string ARCHIVO_VISTAS = "peliculas_vistas.txt";
+const string ARCHIVO_NO_VISTAS = "peliculas_no_vistas.txt";
+const string ARCHIVO_RECOMENDADAS = "peliculas_recomendadas.txt";
+
 class Carga {
 
     private:
@@ -12,16 +16,16 @@ class Carga {
         Lista<Pelicula>* vistas;
         Lista<Pelicula>* no_vistas;
         Lista<Pelicula>* recomendadas;
-        string nombre_archivo_vistas;
-        string nombre_archivo_no_vistas;
-        string nombre_archivo_recomendadas;
+        string nombre_archivo_vistas = ARCHIVO_VISTAS;
+        string nombre_archivo_no_vistas = ARCHIVO_NO_VISTAS;
+        string nombre_archivo_recomendadas = ARCHIVO_RECOMENDADAS;
 
     public:
 
         /* Constructor Carga
         *  Post: Se inicializa cada atributo de la Carga con su correspondiente parametro recibido.
         */
-        Carga(Lista<Pelicula>* vistas, Lista<Pelicula>* no_vistas, Lista<Pelicula>* recomendadas, string archivo_vistas, string archivo_no_vistas, string archivo_recomendadas);
+        Carga(Lista<Pelicula>* vistas, Lista<Pelicula>* no_vistas, Lista<Pelicula>* recomendadas);
 
         //Destructor
         ~Carga();
