@@ -44,19 +44,15 @@ bool Pelicula::coincide_algun_actor(Lista<string>* actores_comparar){
 bool Pelicula::es_recomendada(Lista<Pelicula>* vistas){
     if(puntaje >= PUNTAJE_MINIMO_RECOMENDADA)
         return true;
-
-    bool es_recomendada = false;
-    unsigned i = 1;
-    Pelicula* aux;
-    while(!es_recomendada && i <= vistas->obtener_tam()){
-        aux = vistas->obtener_dato(i);
-        if(genero == aux->obtener_genero()){
-            if( director == aux->obtener_director() || coincide_algun_actor(aux->obtener_actores()))
-                es_recomendada = true;
+    if(!vistas->lista_vacia()){
+        for(unsigned i = 1; i < vistas->obtener_tam(); i++) {
+            if(genero == vistas->obtener_dato(i)->obtener_genero()){
+                if( director == vistas->obtener_dato(i)->obtener_director() || coincide_algun_actor(vistas->obtener_dato(i)->obtener_actores()))
+                    return true;
+            }
         }
-        i++;
     }
-    return es_recomendada;
+    return false;
 }
 
 
@@ -85,6 +81,7 @@ void Pelicula::mostrar_actores(){
     for(unsigned i = 1; i <= actores->obtener_tam(); i++){
         cout << *actores->obtener_dato(i) << " ";
     }
+    cout << "\n";
 }
 
 // muestra los atributos de la peli
@@ -94,7 +91,5 @@ void Pelicula::mostrar(){
     cout << "Puntaje: " << puntaje << endl;
     cout << "Director: " << director << endl;
     mostrar_actores();
-
-
 }
 

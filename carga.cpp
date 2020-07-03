@@ -29,14 +29,12 @@ void Carga::leer_pelicula(ifstream &archivo, Pelicula* &peli){
     getline(archivo, puntaje_str);
     puntaje = stoi(puntaje_str);
     getline(archivo, director);
-    actor_aux = new string;
-    archivo >> *actor_aux;//asumimos que todas las peliculas tienen al menos un actor
-    actores->insertar(actor_aux);
-    while(archivo.get() == ' '){
+    do{
         actor_aux = new string;
         archivo >> *actor_aux;
         actores->insertar(actor_aux);
-    }
+    }while(archivo.get() == ' ');
+
     getline(archivo, linea_en_blanco);
     peli = new Pelicula(nombre, genero, puntaje, director, actores);
 }
@@ -54,10 +52,11 @@ void Carga::agregar(Lista<Pelicula>* peliculas, ifstream& archivo){
 void Carga::agregar_recomendadas(){
     Pelicula* aux;
     for(unsigned i = 1; i <= no_vistas->obtener_tam(); i++){
-        if(no_vistas->obtener_dato(i)->es_recomendada(vistas))
+        if(no_vistas->obtener_dato(i)->es_recomendada(vistas)){
             aux = new Pelicula;
-        aux->copiar_pelicula(no_vistas->obtener_dato(i));
-        recomendadas->insertar(aux);
+            aux->copiar_pelicula(no_vistas->obtener_dato(i));
+            recomendadas->insertar(aux);
+        }
     }
 }
 
@@ -71,12 +70,14 @@ void Carga::cargar_datos(){
         agregar(vistas, archivo_vistas);
         archivo_vistas.close();
     }
-    if(!archivo_no_vistas.fail()){
+    try{
         agregar(no_vistas, archivo_no_vistas);
         archivo_no_vistas.close();
         agregar_recomendadas();
         archivo_recomendadas.close();
-    }else{
-        //hay que tirar un excepcion
+    }
+    catch(const std::exception&){
+        cout << "El archivo 'peliculas_no_vistas.txt' no existe." << endl;
+        exit(1);
     }
 }
