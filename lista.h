@@ -5,49 +5,49 @@
 # include "nodo.h"
 
 template < typename Dato >
-    class Lista{
+class Lista{
 
-    private:
-        Nodo<Dato>* primero; // Primer elemento de la lista
-        unsigned tam; // Tamaño de la lista
+private:
+    Nodo<Dato>* primero; // Primer elemento de la lista
+    unsigned tam; // Tamaño de la lista
 
-    public:
-        // Constructor
-        // PRE: Ninguna
-        // POST: construye una lista vacía
-        // primero apunta a nulo y tam = 0
-        Lista();
+public:
+    // Constructor
+    // PRE: Ninguna
+    // POST: construye una lista vacía
+    // primero apunta a nulo y tam = 0
+    Lista();
 
-        // Destructor
-        // PRE: Lista creada
-        // POST: Libera todos los recursos de la lista
-        ~Lista();
+    // Destructor
+    // PRE: Lista creada
+    // POST: Libera todos los recursos de la lista
+    ~Lista();
 
-        // PRE: lista creada y d válido
-        // POST: agrega un dato dentro de un nodo al principio
-        // - modifica el primero
-        // - tam se incrementa en 1
-        void insertar(Dato d);
+    // PRE: lista creada y d válido
+    // POST: agrega un dato dentro de un nodo al principio
+    // - modifica el primero
+    // - tam se incrementa en 1
+    void insertar(Dato* d);
 
-        // PRE: Lista creada
-        // POST: devuelve el tamaño de la lista (cantidad de nodos)
-        unsigned obtener_tam();
+    // PRE: Lista creada
+    // POST: devuelve el tamaño de la lista (cantidad de nodos)
+    unsigned obtener_tam();
 
-        // PRE: - lista creada y no vacía
-        // - 0 < pos <= tam
-        // POST: devuelve el dato que está en la posición pos (se toma 1 como el primero)
-        Dato obtener_dato(unsigned pos);
+    // PRE: - lista creada y no vacía
+    // - 0 < pos <= tam
+    // POST: devuelve el dato que está en la posición pos (se toma 1 como el primero)
+    Dato* obtener_dato(unsigned pos);
 
-        // PRE: Lista creada
-        // POST: TRUE si es vacia (tam == 0), False en caso contrario
-        bool lista_vacia();
+    // PRE: Lista creada
+    // POST: TRUE si es vacia (tam == 0), False en caso contrario
+    bool lista_vacia();
 
-        // PRE: - lista creada y no vacía
-        // - 0 < pos <= tam
-        // POST: libera el nodo que está en la posición pos (se toma 1 como el primero)
-        void eliminar_dato(unsigned pos);
+    // PRE: - lista creada y no vacía
+    // - 0 < pos <= tam
+    // POST: libera el nodo que está en la posición pos (se toma 1 como el primero)
+    void eliminar_dato(unsigned pos);
 
-        void copiar(Lista<Dato>*);
+    void copiar(Lista<Dato>*);
 
 };
 
@@ -72,7 +72,7 @@ bool Lista<Dato>::lista_vacia(){
 }
 
 template < typename Dato >
-void Lista<Dato>::insertar(Dato d){
+void Lista<Dato>::insertar(Dato* d){
     Nodo<Dato>* nuevo = new Nodo<Dato>(d);
     if (!(this->lista_vacia())){
         nuevo->modificar_sig(primero);
@@ -82,7 +82,7 @@ void Lista<Dato>::insertar(Dato d){
 }
 
 template < typename Dato >
-Dato Lista<Dato>::obtener_dato(unsigned pos){
+Dato* Lista<Dato>::obtener_dato(unsigned pos){
     Nodo<Dato>* paux = primero;
     unsigned i = 1;
     while (i < pos && paux->obtener_sig()){
@@ -118,7 +118,9 @@ void Lista<Dato>::eliminar_dato(unsigned pos){
 template < typename Dato >
 void Lista<Dato>::copiar(Lista<Dato>* lista){
     for(int i = 1; i <= lista->obtener_tam(); i++){
-        insertar(lista->obtener_dato(i));
+        Dato* d = new Dato;
+        *d = *(lista->obtener_dato(i));
+        insertar(d);
     }
 }
 

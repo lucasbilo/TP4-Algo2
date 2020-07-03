@@ -17,13 +17,13 @@ Pelicula::~Pelicula(){
     delete actores;
 }
 
-void Pelicula::copiar_pelicula(Pelicula original){
-    nombre = original.obtener_nombre();
-    genero = original.obtener_genero();
-    puntaje = original.obtener_puntaje();
-    director = original.obtener_director();
+void Pelicula::copiar_pelicula(Pelicula* original){
+    nombre = original->obtener_nombre();
+    genero = original->obtener_genero();
+    puntaje = original->obtener_puntaje();
+    director = original->obtener_director();
     actores = new Lista<string>;
-    actores->copiar(original.obtener_actores());
+    actores->copiar(original->obtener_actores());
 }
 
 bool Pelicula::coincide_algun_actor(Lista<string>* actores_comparar){
@@ -31,7 +31,7 @@ bool Pelicula::coincide_algun_actor(Lista<string>* actores_comparar){
     bool coincidencia = false;
     while(!coincidencia && i <= actores->obtener_tam()){
         while(!coincidencia && j <= actores_comparar->obtener_tam()){
-            if (actores->obtener_dato(i) == actores->obtener_dato(j))
+            if (*actores->obtener_dato(i) == *actores->obtener_dato(j))
                 coincidencia = true;
             j++;
         }
@@ -47,11 +47,11 @@ bool Pelicula::es_recomendada(Lista<Pelicula>* vistas){
 
     bool es_recomendada = false;
     int i = 1;
-    Pelicula aux;
+    Pelicula* aux;
     while(!es_recomendada && i <= vistas->obtener_tam()){
         aux = vistas->obtener_dato(i);
-        if(genero == aux.obtener_genero()){
-            if( director == aux.obtener_director() || coincide_algun_actor(aux.obtener_actores()))
+        if(genero == aux->obtener_genero()){
+            if( director == aux->obtener_director() || coincide_algun_actor(aux->obtener_actores()))
                 es_recomendada = true;
         }
         i++;
@@ -80,9 +80,22 @@ Lista<string>* Pelicula::obtener_actores(){
 }
 
 
-// muestra los atributos de la peli
-void Pelicula::mostrar(){
-    cout << "soy una pelicula" << endl;
+void Pelicula::mostrar_actores(){
+    cout << "Actores: ";
+    for(unsigned i = 1; i <= actores->obtener_tam(); i++){
+        cout << *actores->obtener_dato(i) << endl;
+    }
 }
 
+// muestra los atributos de la peli
+void Pelicula::mostrar(){
+    cout << "Nombre:" << nombre  << endl;
+    cout << "Genero: " << genero << endl;
+    cout << "Puntaje: " << puntaje << endl;
+    cout << "Director: " << director << endl;
+    mostrar_actores();
+
+
+    cout << "soy una pelicula" << endl;
+}
 

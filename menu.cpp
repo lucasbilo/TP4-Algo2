@@ -26,5 +26,5 @@ void Menu::mostrar_lista(int opcion){
         case 3: lista = peliculas_recomendadas; break;
     }
     for(int pos = 1; pos <= lista->obtener_tam(); pos++)
-        lista->obtener_dato(pos).mostrar();
+        lista->obtener_dato(pos)->mostrar();
 }

@@ -17,7 +17,7 @@ int main(){
     Carga carga_peliculas(&peliculas_vistas, &peliculas_no_vistas, &peliculas_recomendadas, ARCHIVO_VISTAS, ARCHIVO_NO_VISTAS, ARCHIVO_RECOMENDADAS);
 
     carga_peliculas.cargar_datos();
-
+/*
     Validacion validaciones;
     Menu menu(&peliculas_vistas, &peliculas_no_vistas, &peliculas_recomendadas);
 
@@ -29,6 +29,7 @@ int main(){
         menu.mostrar_lista(opcion);
         cout << " ------------------------------------------------- " << endl;
     }while(opcion != 4);
-
+*/
     return 0;
+
 }
