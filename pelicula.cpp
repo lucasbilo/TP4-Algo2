@@ -27,17 +27,13 @@ void Pelicula::copiar_pelicula(Pelicula* original){
 }
 
 bool Pelicula::coincide_algun_actor(Lista<string>* actores_comparar){
-    unsigned i = 1, j = 1;
-    bool coincidencia = false;
-    while(!coincidencia && i <= actores->obtener_tam()){
-        while(!coincidencia && j <= actores_comparar->obtener_tam()){
+    for(unsigned i = 1; i <= actores->obtener_tam(); i++){
+        for(unsigned j = 1; j <= actores_comparar->obtener_tam(); j++){
             if (*actores->obtener_dato(i) == *actores->obtener_dato(j))
-                coincidencia = true;
-            j++;
+                return true;
         }
-        i++;
     }
-    return coincidencia;
+    return false;
 }
 
 
