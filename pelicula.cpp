@@ -27,7 +27,7 @@ void Pelicula::copiar_pelicula(Pelicula* original){
 }
 
 bool Pelicula::coincide_algun_actor(Lista<string>* actores_comparar){
-    int i = 1, j = 1;
+    unsigned i = 1, j = 1;
     bool coincidencia = false;
     while(!coincidencia && i <= actores->obtener_tam()){
         while(!coincidencia && j <= actores_comparar->obtener_tam()){
@@ -46,7 +46,7 @@ bool Pelicula::es_recomendada(Lista<Pelicula>* vistas){
         return true;
 
     bool es_recomendada = false;
-    int i = 1;
+    unsigned i = 1;
     Pelicula* aux;
     while(!es_recomendada && i <= vistas->obtener_tam()){
         aux = vistas->obtener_dato(i);

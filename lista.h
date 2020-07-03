@@ -117,7 +117,7 @@ void Lista<Dato>::eliminar_dato(unsigned pos){
 
 template < typename Dato >
 void Lista<Dato>::copiar(Lista<Dato>* lista){
-    for(int i = 1; i <= lista->obtener_tam(); i++){
+    for(unsigned i = 1; i <= lista->obtener_tam(); i++){
         Dato* d = new Dato;
         *d = *(lista->obtener_dato(i));
         insertar(d);

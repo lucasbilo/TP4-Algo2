@@ -53,7 +53,7 @@ void Carga::agregar(Lista<Pelicula>* peliculas, ifstream& archivo){
 //Si analiza cada pelicula de la lista de no_vistas y si es recomendada, se la agrega a la lista de recomendadas.
 void Carga::agregar_recomendadas(){
     Pelicula* aux;
-    for(int i = 1; i <= no_vistas->obtener_tam(); i++){
+    for(unsigned i = 1; i <= no_vistas->obtener_tam(); i++){
         if(no_vistas->obtener_dato(i)->es_recomendada(vistas))
             aux = new Pelicula;
         aux->copiar_pelicula(no_vistas->obtener_dato(i));
