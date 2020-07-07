@@ -25,7 +25,7 @@ class Carga {
         /* Constructor Carga
         *  Post: Se inicializa cada atributo de la Carga con su correspondiente parametro recibido.
         */
-        Carga(Lista<Pelicula>* vistas, Lista<Pelicula>* no_vistas, Lista<Pelicula>* recomendadas, string archivo_vistas, string archivo_no_vistas, string archivo_recomendadas);
+        Carga(Lista<Pelicula>* vistas, Lista<Pelicula>* no_vistas, Lista<Pelicula>* recomendadas);
 
         //Destructor
         ~Carga();
