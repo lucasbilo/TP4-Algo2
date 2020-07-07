@@ -5,14 +5,11 @@
 using namespace std;
 
 //Constructor
-Carga::Carga(Lista<Pelicula>* vistas, Lista<Pelicula>* no_vistas, Lista<Pelicula>* recomendadas, string archivo_vistas, string archivo_no_vistas, string archivo_recomendadas){
+Carga::Carga(Lista<Pelicula>* vistas, Lista<Pelicula>* no_vistas, Lista<Pelicula>* recomendadas){
 
     this->vistas = vistas;
     this->no_vistas = no_vistas;
     this->recomendadas = recomendadas;
-    this->nombre_archivo_vistas = archivo_vistas;
-    this->nombre_archivo_no_vistas = archivo_no_vistas;
-    this->nombre_archivo_recomendadas = archivo_recomendadas;
 }
 
 //Destructor
