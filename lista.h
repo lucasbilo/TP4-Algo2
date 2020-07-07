@@ -35,7 +35,7 @@ public:
 
     // PRE: - lista creada y no vacía
     // - 0 < pos <= tam
-    // POST: devuelve el dato que está en la posición pos (se toma 1 como el primero)
+    // POST: devuelve un puntero al dato que está en la posición pos (se toma 1 como el primero)
     Dato* obtener_dato(unsigned pos);
 
     // PRE: Lista creada
@@ -47,17 +47,20 @@ public:
     // POST: libera el nodo que está en la posición pos (se toma 1 como el primero)
     void eliminar_dato(unsigned pos);
 
+    //POST: Copia los datos de la lista en lo apuntado por el puntero a la lista que es pasada por parametro.
+
     void copiar(Lista<Dato>*);
 
 };
 
-
+//Constructor
 template < typename Dato >
 Lista<Dato>::Lista(){
     primero = 0;
     tam = 0;
 }
 
+//Destructor
 template < typename Dato >
 Lista<Dato>::~Lista(){
     while (!this->lista_vacia()){
