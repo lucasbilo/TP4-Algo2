@@ -57,12 +57,11 @@ void Carga::agregar_recomendadas(){
     }
 }
 
-//Se agregan las peliculas de los archivos nombre_archivo_vistas y nombre_archivo_no_vistas en las respectivas listas.
+//Se agregan las peliculas de los archivos nombre_archivo_vistas y nombre_archivo_no_vistas en las respectivas listas y tambien se completa la lista de recomendadas.
 void Carga::cargar_datos(){
 
-    ifstream archivo_vistas(nombre_archivo_vistas);
-    ifstream archivo_no_vistas(nombre_archivo_no_vistas);
-    ifstream archivo_recomendadas(nombre_archivo_recomendadas);
+    ifstream archivo_vistas(ARCHIVO_VISTAS);
+    ifstream archivo_no_vistas(ARCHIVO_NO_VISTAS);
     if(!archivo_vistas.fail()){
         agregar(vistas, archivo_vistas);
         archivo_vistas.close();
@@ -71,10 +70,9 @@ void Carga::cargar_datos(){
         agregar(no_vistas, archivo_no_vistas);
         archivo_no_vistas.close();
         agregar_recomendadas();
-        archivo_recomendadas.close();
     }
     catch(const std::exception&){
-        cout << "El archivo 'peliculas_no_vistas.txt' no existe." << endl;
+        cout << "El archivo " << ARCHIVO_NO_VISTAS << " no existe." << endl;
         exit(1);
     }
 }

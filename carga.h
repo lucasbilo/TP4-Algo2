@@ -1,13 +1,11 @@
 #ifndef _CARGA_H
 #define _CARGA_H
 
-using namespace std;
 #include "lista.h"
 #include "pelicula.h"
 
-const string ARCHIVO_VISTAS = "peliculas_vistas.txt";
-const string ARCHIVO_NO_VISTAS = "peliculas_no_vistas.txt";
-const string ARCHIVO_RECOMENDADAS = "peliculas_recomendadas.txt";
+const std::string ARCHIVO_VISTAS = "peliculas_vistas.txt";
+const std::string ARCHIVO_NO_VISTAS = "peliculas_no_vistas.txt";
 
 class Carga {
 
@@ -16,9 +14,6 @@ class Carga {
         Lista<Pelicula>* vistas;
         Lista<Pelicula>* no_vistas;
         Lista<Pelicula>* recomendadas;
-        string nombre_archivo_vistas = ARCHIVO_VISTAS;
-        string nombre_archivo_no_vistas = ARCHIVO_NO_VISTAS;
-        string nombre_archivo_recomendadas = ARCHIVO_RECOMENDADAS;
 
     public:
 
@@ -32,7 +27,8 @@ class Carga {
 
         /*
         * Pre: Los archivos siguen una estructura determinada por nombre, genero, puntaje, director y finalmente una lista de actores.
-        * Post: Se agregan las peliculas de los archivos nombre_archivo_vistas y nombre_archivo_no_vistas en las respectivas listas.
+        * Post: Se agregan las peliculas de los archivos nombre_archivo_vistas y nombre_archivo_no_vistas en las respectivas listas
+        *       y se agregan las peliculas de la lista de no vistas que son recomendadas a la correspondiente lista.
         */
         void cargar_datos();
 
@@ -41,7 +37,7 @@ class Carga {
         * Pre: El archivo sigue una estructura determinada por nombre, genero, puntaje, director y finalmente una lista de actores.
         * Post: Se agregan las peliculas del archivo en la lista de peliculas.
         */
-        void agregar(Lista<Pelicula>* peliculas, ifstream& archivo);
+        void agregar(Lista<Pelicula>* peliculas, std::ifstream& archivo);
 
         /*
         * Pre: El archivo de recomendadas se abrio correctamente.
@@ -54,7 +50,7 @@ class Carga {
          * Pre: El archivo fue abierto correctamente y sigue una estructura determinada por nombre, genero, puntaje, director y finalmente una lista de actores.
          * Post: Lee una pelicula y la guarda en memoria dinamica apuntada por peli.
          */
-         void leer_pelicula(ifstream &archivo, Pelicula* &peli);
+         void leer_pelicula(std::ifstream &archivo, Pelicula* &peli);
 };
 
 
