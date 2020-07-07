@@ -47,7 +47,7 @@ public:
     // POST: libera el nodo que está en la posición pos (se toma 1 como el primero)
     void eliminar_dato(unsigned pos);
 
-    //POST: Copia los datos de la lista en lo apuntado por el puntero a la lista que es pasada por parametro.
+    //POST: Copia los datos del puntero recibido en la lista.
 
     void copiar(Lista<Dato>*);
 

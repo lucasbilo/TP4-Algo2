@@ -1,7 +1,6 @@
-#ifndef TP4_ALGO2_PELICULAS_H
-#define TP4_ALGO2_PELICULAS_H
+#ifndef _PELICULAS_H
+#define _PELICULAS_H
 
-using namespace std;
 #include <iostream>
 #include "pelicula.h"
 #include "lista.h"
@@ -11,11 +10,11 @@ const int PUNTAJE_MINIMO_RECOMENDADA = 7;
 class Pelicula{
 
     private:
-        string nombre;
-        string genero;
+        std::string nombre;
+        std::string genero;
         int puntaje;
-        string director;
-        Lista<string>* actores;
+        std::string director;
+        Lista<std::string>* actores;
 
     public:
         //Constructor sin parametro
@@ -23,12 +22,12 @@ class Pelicula{
         Pelicula();
 
         // CONSTRUCTOR
-        // POST: Inicializa a Pelicula, se asigna cada parametro al atributo correspondiente
-        Pelicula(string nombre, string genero, int puntaje, string director, Lista<string>* actores);
+        // POST: Inicializa a Pelicula, se asigna cada parametro al atributo correspondiente. Actores apunta a memoria alocada dinamicamente.
+        Pelicula(std::string nombre, std::string genero, int puntaje, std::string director, Lista<std::string>* actores);
 
         // DESTRUCTOR
         // PRE: Pelicula creada
-        // POST: Libera la memoria usada en el atributo actores
+        // POST: Libera la memoria usada en el atributo actores.
         ~Pelicula();
 
         // POST: Puede devolver TRUE en 2 casos:
@@ -48,19 +47,19 @@ class Pelicula{
         void mostrar();
 
         // POST: Devuelve un string que es el atributo nombre
-        string obtener_nombre();
+        std::string obtener_nombre();
 
         // POST: Devuelve un string que es el atributo genero
-        string obtener_genero();
+        std::string obtener_genero();
 
         // POST: Devuelve un entero que es el atributo puntaje
         int obtener_puntaje();
 
         // POST: Devuelve un string que es el atributo director
-        string obtener_director();
+        std::string obtener_director();
 
         // POST: Devuelve un puntero a una lista de string que es el atributo actores
-        Lista<string>* obtener_actores();
+        Lista<std::string>* obtener_actores();
 
     private:
         // PRE: actores->obtener_tam() > 0
@@ -70,7 +69,7 @@ class Pelicula{
         // PRE: actores_comparar no puede estar vacio
         // POST: Compara el atributo actores con la lista que apunta el parametro pasado
         // Devuelve TRUE si hay al menos 1 coincidencia, FALSE en caso contrario
-        bool coincide_algun_actor(Lista<string>* actores_comparar);
+        bool coincide_algun_actor(Lista<std::string>* actores_comparar);
 };
 
-#endif //TP4_ALGO2_PELICULAS_H
+#endif //_PELICULAS_H
