@@ -23,7 +23,7 @@ public:
     // POST: Libera todos los recursos de la lista
     ~Lista();
 
-    // PRE: lista creada y d válido
+    // PRE: lista creada y d puntero que apunta a memoria dinamica.
     // POST: agrega un dato dentro de un nodo al principio
     // - modifica el primero
     // - tam se incrementa en 1

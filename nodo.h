@@ -11,17 +11,17 @@ private:
 
 public:
     // Constructor con parametro
-    // PRE: Ninguna
+    // PRE: d es un puntero que apunta a memoria dinamica
     // POST: Crea un nodo con el dato d y el puntero a NULL
     Nodo(Dato* d);
 
     // Destructor
     // PRE: Nodo creado
-    // POST: No hace nada
+    // POST: Elimina la memoria a la que apunta dato.
     ~Nodo();
 
-    // PRE: el nodo tiene que estar creado y d tiene que ser un dato valido
-    // POST: dato = d
+    // PRE: el nodo tiene que estar creado y d tiene que apuntar a un dato valido
+    // POST: Elimina la memoria a la que apuntaba dato y modifica, dato = d
     void modificar_dato(Dato* d);
 
     // PRE: nodo creado y ps válido
@@ -29,7 +29,7 @@ public:
     void modificar_sig(Nodo* ps);
 
     // PRE: nodo creado
-    // POST: devuelve el dato que contiene el nodo
+    // POST: devuelve el dato que contiene el nodo(puntero a un dato en en el heap)
     Dato* obtener_dato();
 
     // PRE: nodo creado
@@ -55,6 +55,7 @@ Nodo<Dato>::~Nodo(){
 
 template < typename Dato >
 void Nodo<Dato>::modificar_dato(Dato* d){
+    delete dato;
     dato = d;
 }
 
