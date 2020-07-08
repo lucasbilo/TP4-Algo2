@@ -23,6 +23,8 @@ void Menu::mostrar(){
 }
 
 void Menu::mostrar_lista(Lista<Pelicula>* lista){
+    if(lista->lista_vacia())
+        cout << "La lista esta vacia" << endl;
     for(unsigned pos = 1; pos <= lista->obtener_tam(); pos++) {
         cout << "Pelicula nro " << pos << ")" << endl;
         lista->obtener_dato(pos)->mostrar();
