@@ -19,13 +19,13 @@ Carga::~Carga(){
 //Lee una pelicula y la guarda en memoria dinamica apuntada por peli.
 void Carga::leer_pelicula(ifstream &archivo, Pelicula* &peli){
     string nombre, genero, director, *actor_aux, puntaje_str, linea_en_blanco;
-    Lista<string>* actores = new Lista<string>;
     int puntaje;
     getline(archivo, nombre);
     getline(archivo, genero);
     getline(archivo, puntaje_str);
     puntaje = stoi(puntaje_str);
     getline(archivo, director);
+    Lista<string>* actores = new Lista<string>;
     do{
         actor_aux = new string;
         archivo >> *actor_aux;
@@ -72,7 +72,6 @@ void Carga::cargar_datos(){
         agregar_recomendadas();
     }
     catch(const std::exception&){
-        cout << "El archivo " << ARCHIVO_NO_VISTAS << " no existe." << endl;
-        exit(1);
+        cout << "*** El archivo " << ARCHIVO_NO_VISTAS << " no existe. ***" << endl;
     }
 }
