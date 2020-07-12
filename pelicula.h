@@ -37,7 +37,7 @@ class Pelicula{
         bool es_recomendada(Lista<Pelicula>* vistas);
 
         // PRE: peli debe estar inicializada
-        // POST: Cambia los atributos de la pelicula a los atributos que tiene la pelicula pasada por parametro
+        // POST: Cambia los atributos de la pelicula a los atributos de la pelicula que apunta el puntero pasada por parametro
         void copiar_pelicula(Pelicula* peli);
 
 
